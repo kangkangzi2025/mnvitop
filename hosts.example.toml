@@ -1,0 +1,17 @@
+# Copy to ~/.config/mnvitop/hosts.toml, then run mnvitop with no arguments.
+
+interval = 0.5
+highlight = "ray::|sglang::"
+
+[[hosts]]
+name = "h20"
+ssh = "h20"
+
+[[hosts]]
+name = "semi"
+ssh = "root@10.0.0.7"
+ssh_args = ["-p", "8022"]
+
+[[hosts]]
+name = "pro6000"
+ssh = "pro6000"

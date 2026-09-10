@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mnvitop"
+version = "1.0.0"
+description = "One terminal for the GPUs of all your ssh hosts, plus an MCP server so agents can find a free GPU"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "Fukang Wen" }]
+keywords = ["nvidia", "gpu", "monitoring", "ssh", "nvitop", "cluster", "terminal"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Topic :: System :: Monitoring",
+]
+dependencies = ["rich>=13.0"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.2"]
+
+[project.urls]
+Homepage = "https://github.com/kangkangzi2025/mnvitop"
+Repository = "https://github.com/kangkangzi2025/mnvitop"
+Issues = "https://github.com/kangkangzi2025/mnvitop/issues"
+
+[project.scripts]
+mnvitop = "mnvitop.cli:main"
+mnvitop-mcp = "mnvitop.mcp:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "mcp>=1.2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mnvitop"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
